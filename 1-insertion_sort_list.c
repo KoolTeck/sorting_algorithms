@@ -8,53 +8,46 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-listint_t *sorted, *current, *next;
-
-sorted = NULL;
-current = *list;
-while (current != NULL)
+listint_t *ptr, *cur, *tmp;
+int n;
+cur = *list;
+if (cur->next==NULL)
+return;
+cur = cur->next;
+while(cur!=NULL)
 {
-next = current->next;
-current->prev = current->next = NULL;
-sort_node(&sorted, current);
-current = next;
-}
-*list = sorted;
+n = 0;
+ptr = cur;
+tmp = cur->prev;
+cur = cur->next;
+while (tmp != NULL && tmp->n > ptr->n)
+{
+n++;
+tmp = tmp->prev;
 print_list(*list);
 }
-
-
-/**
- * sort_node - swaps two nodes
- * @head: the ist node
- * @new_node: the second node
- *
- * Return: nothing
- */
-void sort_node(listint_t **head, listint_t *new_node)
+if (n)
 {
-listint_t *current;
-if (*head == NULL)
+ptr->prev->next = ptr->next;
+if (ptr->next != NULL)
+ptr->next->prev = ptr->prev;	
+if (tmp == NULL)
 {
-*head = new_node;
-}
-else if ((*head)->n >= new_node->n)
-{
-new_node->next = *head;
-new_node->next->prev = new_node;
-*head = new_node;
+tmp = *list;
+ptr->prev=NULL;
+ptr->next=tmp;
+ptr->next->prev = ptr;
+*list = ptr;
 }
 else
 {
-current = *head;
-while (current->next && current->next->n < new_node->n)
-{
-current = current->next;
+tmp = tmp->next;
+tmp->prev->next = ptr;
+ptr->prev = tmp->prev;
+tmp->prev = ptr;
+ptr->next = tmp;
+print_list(*list);
 }
-new_node->next = current->next;
-if (current->next != NULL)
-new_node->next->prev = new_node;
-current->next = new_node;
-new_node->prev = current;
+}
 }
 }
