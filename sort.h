@@ -23,5 +23,8 @@ void bubble_sort(int *array, size_t size);
 listint_t *create_listint(const int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *array, size_t size);
-void swap(int *a_ptr, int *b_pt);
+void quick_sort(int *array, size_t size);
+int pertition(int *array, int ist_idx, int last_idx, size_t size);
+void sort(int *array, int ist_idx, int last_idx, size_t size);
+void swap(int *a_ptr, int *b_ptr);
 #endif

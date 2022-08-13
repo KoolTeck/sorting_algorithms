@@ -36,19 +36,3 @@ print_array(array, size);
 }
 }
 
-
-/**
- * swap - swaps two elements
- *
- * @a_ptr: the address of the ist element
- * @b_ptr: the address of the second element
- *
- * Return: Nothing
- */
-void swap(int *a_ptr, int *b_ptr)
-{
-int temp;
-temp = *a_ptr;
-*a_ptr = *b_ptr;
-*b_ptr = temp;
-}
