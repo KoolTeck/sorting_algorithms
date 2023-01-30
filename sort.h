@@ -27,4 +27,5 @@ void quick_sort(int *array, size_t size);
 int pertition(int *array, int ist_idx, int last_idx, size_t size);
 void sort(int *array, int ist_idx, int last_idx, size_t size);
 void swap(int *a_ptr, int *b_ptr);
+void shell_sort(int *array, size_t size);
 #endif
